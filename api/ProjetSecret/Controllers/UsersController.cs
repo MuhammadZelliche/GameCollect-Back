@@ -35,7 +35,7 @@ namespace ProjetSecret.Controllers
         {
             // Seul un "admin" devrait pouvoir faire ça
             // On vérifie le rôle présent dans le token
-            if (!User.IsInRole("Admin"))
+            if (!User.IsInRole("admin"))
             {
                 return Forbid("Accès réservé aux administrateurs.");
             }

@@ -49,7 +49,7 @@ Pour lancer ce projet, vous avez **seulement** besoin des outils suivants instal
 2.  **Construire les conteneurs**
     La première fois, vous devez construire les images Docker (en particulier l'image de l'API) :
     ```bash
-    docker compose build
+    docker compose --build
     ```
 
 ---
@@ -59,7 +59,7 @@ Pour lancer ce projet, vous avez **seulement** besoin des outils suivants instal
 Pour lancer l'environnement de développement complet (API + Base de données) :
 
 ```bash
-docker compose up
+docker compose --up
 ```
 
 L'API est accessible sur http://localhost:8080 (qui affiche directement l'interface Swagger).
@@ -84,7 +84,7 @@ Vous serez alors à l'intérieur du conteneur (root@...:/src#).
 **_Pour utiliser les outils de dotnet, il faudra problablement lancer la commande de restauration :_**
 
 ```bash
-dotnet ef restore
+dotnet tool restore
 ```
 
 **Migrations (Mise à jour du schéma)**
