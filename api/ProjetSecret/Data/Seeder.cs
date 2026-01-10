@@ -12,8 +12,7 @@ namespace ProjetSecret.Data
         {
             _context = context;
         }
-
-        // Petite extension utilitaire pour convertir proprement en UTC
+        
         private static DateTime ToUtc(DateTime date)
         {
             return DateTime.SpecifyKind(date, DateTimeKind.Local).ToUniversalTime();
@@ -21,7 +20,6 @@ namespace ProjetSecret.Data
 
         public async Task SeedAsync()
         {
-            // Étape 1 : Vérifier si la BDD est déjà remplie
             if (await _context.Users.AnyAsync() || await _context.Games.AnyAsync())
             {
                 Console.WriteLine("La base de données contient déjà des données. Seeding annulé.");
@@ -62,8 +60,7 @@ namespace ProjetSecret.Data
 
             var fakeGames = gameFaker.Generate(500);
             await _context.Games.AddRangeAsync(fakeGames);
-
-            // Sauvegarde pour récupérer les IDs
+            
             await _context.SaveChangesAsync();
             Console.WriteLine("Utilisateurs et Jeux créés.");
 

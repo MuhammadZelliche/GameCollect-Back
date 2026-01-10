@@ -15,17 +15,15 @@ namespace ProjetSecret.Models
 
         [ForeignKey("Game")]
         public int GameId { get; set; }
-
-        // --- Données de la review ---
-        [Range(1, 5)] // La note est entre 1 et 5
+        
+        [Range(1, 5)] 
         public int Note { get; set; }
 
-        public string? Commentaire { get; set; } // Commentaire (nullable)
+        public string? Commentaire { get; set; }
 
         public DateTime DatePublication { get; set; } = DateTime.UtcNow;
-
-        // --- Objets de navigation (pour EF Core) ---
-    public User User { get; set; } = null!;
-    public Game Game { get; set; } = null!;
+        
+        public User User { get; set; } = null!;
+        public Game Game { get; set; } = null!;
     }
 }

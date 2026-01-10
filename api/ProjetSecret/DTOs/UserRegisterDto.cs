@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjetSecret.DTOs
 {
-    // Ce qu'on attend du client pour un enregistrement
     public class UserRegisterDto
     {
         [Required]

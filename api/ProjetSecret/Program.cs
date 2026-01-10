@@ -1,6 +1,3 @@
-// --- Fichier : Program.cs (Complet avec JWT et CORS) ---
-
-// Usings pour EF Core, JWT, Swagger, etc.
 using Microsoft.EntityFrameworkCore;
 using ProjetSecret.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- 1. CONFIGURATION DES SERVICES ---
 
-// A. Récupérer les configurations (BDD et JWT Secret)
 var connectionString = builder.Configuration.GetConnectionString("Default");
 var jwtSecret = builder.Configuration["JWT_SECRET"];
 
@@ -27,18 +23,14 @@ if (string.IsNullOrEmpty(connectionString))
 
 var key = Encoding.ASCII.GetBytes(jwtSecret);
 
-// B. Ajouter le service CORS (pour autoriser les requêtes cross-domain)
 builder.Services.AddCors();
 
-// C. Ajouter le DbContext (Base de données)
 builder.Services.AddDbContext<GameCollectDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// D. Ajouter les Contrôleurs
 builder.Services.AddControllers();
 builder.Services.AddScoped<Seeder>();
 
-// E. Ajouter l'Authentification JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,28 +38,24 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    // En dev, on n'utilise pas HTTPS forcément
     options.RequireHttpsMetadata = builder.Environment.IsProduction(); 
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = false, // Pourrait être true en prod
-        ValidateAudience = false // Pourrait être true en prod
+        ValidateIssuer = false,
+        ValidateAudience = false 
     };
 });
 
-// F. Ajouter l'Autorisation
 builder.Services.AddAuthorization();
 
-// G. Ajouter Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "ProjetSecret API", Version = "v1" });
-
-    // Configurer Swagger pour utiliser le "Bearer token"
+    
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Authentification JWT (Bearer). Entrez 'Bearer' [espace] puis votre token.",
@@ -112,33 +100,27 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// *** POLITIQUE CORS (À PLACER ICI) ***
-// (Permet à n'importe quel domaine d'accéder à l'API)
 app.UseCors(options => options
     .AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
 
-// L'ordre est crucial :
 app.UseAuthentication(); // 1. Qui es-tu ?
 app.UseAuthorization();  // 2. As-tu le droit ?
 
 app.MapControllers();
 
-// --- LOGIQUE DU SCRIPT DE SEEDING ---
-// Vérifie si l'argument "seed" a été passé au lancement
+// --- SEEDING ---
 if (args.Length == 1 && args[0].Equals("seed", StringComparison.OrdinalIgnoreCase))
 {
     Console.WriteLine("Lancement du script de seeding...");
-
-    // On crée un "scope" pour récupérer nos services
+    
     using (var scope = app.Services.CreateScope())
     {
         var services = scope.ServiceProvider;
         try
         {
             var seeder = services.GetRequiredService<Seeder>();
-            // On utilise .Wait() car on ne peut pas utiliser 'await' ici
             seeder.SeedAsync().Wait(); 
         }
         catch (Exception ex)
@@ -147,11 +129,8 @@ if (args.Length == 1 && args[0].Equals("seed", StringComparison.OrdinalIgnoreCas
             logger.LogError(ex, "Une erreur est survenue pendant le seeding.");
         }
     }
-
-    // On arrête l'application après le seeding
-    // On ne veut pas lancer le serveur web
+    
     return; 
 }
-// --- FIN DU SCRIPT ---
 
 app.Run();

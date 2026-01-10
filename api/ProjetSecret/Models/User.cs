@@ -1,37 +1,35 @@
 
 using System.ComponentModel.DataAnnotations; // Pour les annotations comme [Key]
-using System.ComponentModel.DataAnnotations.Schema; // Pour [Table]
+using System.ComponentModel.DataAnnotations.Schema; 
 
 namespace ProjetSecret.Models
 {
-    [Table("Users")] // Nom de la table en BDD
+    [Table("Users")] 
     public class User
     {
-        [Key] // Indique que c'est la clé primaire
+        [Key] 
         public int UserId { get; set; }
 
-        [Required] // Indique non-nul
+        [Required] 
         [MaxLength(100)]
         public string Username { get; set; } = null!;
 
         [Required]
-        [EmailAddress] // Validation d'email
+        [EmailAddress]
         [MaxLength(255)]
         public string Email { get; set; } = null!;
 
         [Required]
         public string PasswordHash { get; set; } = null!;
 
-        public DateTime DateCreation { get; set; } = DateTime.UtcNow; // Valeur par défaut
+        public DateTime DateCreation { get; set; } = DateTime.UtcNow; 
 
         [MaxLength(50)]
-        public string Role { get; set; } = "user"; // Valeur par défaut
+        public string Role { get; set; } = "user"; 
 
         // --- Relations ---
-        // Un utilisateur peut avoir plusieurs UserGame (sa collection)
         public ICollection<UserGame> UserGames { get; set; } = new List<UserGame>();
-
-        // Un utilisateur peut écrire plusieurs Reviews
+        
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

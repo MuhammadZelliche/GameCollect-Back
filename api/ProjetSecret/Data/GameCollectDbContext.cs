@@ -19,24 +19,18 @@ namespace ProjetSecret.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // 🔒 Email unique
+            
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
-
-            // 🔒 (UserId + GameId) unique
+            
             modelBuilder.Entity<UserGame>()
                 .HasIndex(ug => new { ug.UserId, ug.GameId })
                 .IsUnique();
-
-            // 🌍 Forçage global de toutes les dates en UTC
+            
             ApplyUtcDateTimeConfiguration(modelBuilder);
         }
-
-        // ---------------------------------------------------
-        // 🕒 Convertisseur UTC appliqué à toutes les DateTime
-        // ---------------------------------------------------
+        
         private static void ApplyUtcDateTimeConfiguration(ModelBuilder modelBuilder)
         {
             var dateTimeConverter = new ValueConverter<DateTime, DateTime>(

@@ -18,16 +18,14 @@ namespace ProjetSecret.Models
 
         public int AnneeSortie { get; set; }
 
-        public string? ImageUrl { get; set; } // '?' indique que c'est nullable
+        public string? ImageUrl { get; set; }
 
         [MaxLength(50)]
         public string? Rarete { get; set; }
 
         // --- Relations ---
-        // Un jeu peut être dans plusieurs collections (UserGame)
         public ICollection<UserGame> UserGames { get; set; } = new List<UserGame>();
-
-        // Un jeu peut recevoir plusieurs Reviews
+        
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

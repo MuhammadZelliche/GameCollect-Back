@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjetSecret.DTOs
 {
-    // Ce qu'un utilisateur est autorisé à modifier sur son profil
     public class UserUpdateDto
     {
         [Required]

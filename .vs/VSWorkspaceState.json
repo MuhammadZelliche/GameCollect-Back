@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\api",
+    "\\api\\ProjetSecret",
+    "\\api\\ProjetSecret\\Controllers",
+    "\\api\\ProjetSecret\\DTOs",
+    "\\api\\ProjetSecret\\Models"
   ],
+  "SelectedNode": "\\api\\ProjetSecret\\Models\\Review.cs",
   "PreviewInSolutionExplorer": false
 }
