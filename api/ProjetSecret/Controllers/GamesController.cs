@@ -9,7 +9,7 @@ namespace ProjetSecret.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("api/[controller]")] // -> /api/games
+    [Route("api/[controller]")]
     public class GamesController : ControllerBase
     {
         private readonly GameCollectDbContext _context;
@@ -19,55 +19,100 @@ namespace ProjetSecret.Controllers
             _context = context;
         }
 
-        // POST: api/games
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Game>> CreateGame(Game game)
         {
             _context.Games.Add(game);
-
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetGameById), new { id = game.GameId }, game);
         }
 
-        // GET: api/games
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameDto>>> GetAllGames()
+        public async Task<ActionResult<IEnumerable<GameDto>>> GetAllGames(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 20,
+            [FromQuery] string? search = null,
+            [FromQuery] string? platform = null,
+            [FromQuery] string? rarity = null,
+            [FromQuery] string? sort = null)
         {
-            return await _context.Games.Include(r => r.Reviews).Include(u => u.UserGames).Select(g => new GameDto
-            {
-                Id = g.GameId,
-                Titre = g.Titre,
-                Plateforme = g.Plateforme,
-                AnneeSortie = g.AnneeSortie,
-                ImageUrl = g.ImageUrl,
-                Rarete = g.Rarete,
-                Reviews = g.Reviews.Select(r => new ReviewDto
-                {
-                    ReviewId = r.ReviewId,
-                    Note = r.Note,
-                    Commentaire = r.Commentaire,
-                    UserId = r.UserId
-                }).ToList(),
+            if (page < 1) page = 1;
+            if (pageSize > 50) pageSize = 50;
 
-                UserGames = g.UserGames.Select(ug => new UserGameDto
-                {
-                    UserId = ug.UserId,
-                    Username = ug.User.Username,
-                    GameId = ug.GameId,
-                    GameTitre = ug.Game.Titre,
-                    NotePerso = ug.NotePerso,
-                    DateAjout = ug.DateAjout,
-                }).ToList()
-            }).ToListAsync();
+            var query = _context.Games.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(g => g.Titre.ToLower().Contains(search.ToLower()));
+            }
+
+            if (!string.IsNullOrWhiteSpace(platform))
+            {
+                query = query.Where(g => g.Plateforme == platform);
+            }
+
+            if (!string.IsNullOrWhiteSpace(rarity))
+            {
+                query = query.Where(g => g.Rarete == rarity);
+            }
+
+            switch (sort)
+            {
+                case "year-desc":
+                    query = query.OrderByDescending(g => g.AnneeSortie);
+                    break;
+                case "year-asc":
+                    query = query.OrderBy(g => g.AnneeSortie);
+                    break;
+                case "title":
+                default:
+                    query = query.OrderBy(g => g.Titre);
+                    break;
+            }
+
+            var games = await query.Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(r => r.Reviews)
+                    .Include(u => u.UserGames)
+                    .Select(g => new GameDto
+                    {
+                        Id = g.GameId,
+                        Titre = g.Titre,
+                        Plateforme = g.Plateforme,
+                        AnneeSortie = g.AnneeSortie,
+                        ImageUrl = g.ImageUrl,
+                        Rarete = g.Rarete,
+                        Reviews = g.Reviews.Select(r => new ReviewDto
+                        {
+                            ReviewId = r.ReviewId,
+                            Note = r.Note,
+                            Commentaire = r.Commentaire,
+                            UserId = r.UserId
+                        }).ToList(),
+                        UserGames = g.UserGames.Select(ug => new UserGameDto
+                        {
+                            UserId = ug.UserId,
+                            Username = ug.User.Username,
+                            GameId = ug.GameId,
+                            GameTitre = ug.Game.Titre,
+                            NotePerso = ug.NotePerso,
+                            DateAjout = ug.DateAjout,
+                        }).ToList()
+                    })
+                .ToListAsync();
+
+            return Ok(games);
         }
 
         // GET: api/games/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGameById(int id)
         {
-            var game = await _context.Games.Include(r => r.Reviews).Include(u => u.UserGames).Where(g => g.GameId == id)
+            var game = await _context.Games
+                .Include(r => r.Reviews)
+                .Include(u => u.UserGames)
+                .Where(g => g.GameId == id)
                 .Select(g => new GameDto
                 {
                     Id = g.GameId,
@@ -83,7 +128,6 @@ namespace ProjetSecret.Controllers
                         Commentaire = r.Commentaire,
                         UserId = r.UserId
                     }).ToList(),
-
                     UserGames = g.UserGames.Select(ug => new UserGameDto
                     {
                         UserId = ug.UserId,
@@ -93,7 +137,6 @@ namespace ProjetSecret.Controllers
                         NotePerso = ug.NotePerso,
                         DateAjout = ug.DateAjout,
                     }).ToList()
-
                 }).FirstOrDefaultAsync();
 
             if (game == null)
@@ -141,7 +184,6 @@ namespace ProjetSecret.Controllers
         public async Task<IActionResult> DeleteGame(int id)
         {
             var game = await _context.Games.FindAsync(id);
-
             if (game == null)
             {
                 return NotFound(new { message = "Jeu non trouvé" });
