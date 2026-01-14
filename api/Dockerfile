@@ -6,8 +6,9 @@ COPY ProjetSecret/*.csproj ./ProjetSecret/
 WORKDIR /src/ProjetSecret
 RUN dotnet restore
 
-COPY ProjetSecret/ /tmp/ProjetSecret/
-WORKDIR /tmp/ProjetSecret
+WORKDIR /src
+COPY ProjetSecret/ ./ProjetSecret/
+WORKDIR /src/ProjetSecret
 
 RUN dotnet build -c Release --no-restore
 RUN dotnet publish -c Release -o /app/publish --no-build
