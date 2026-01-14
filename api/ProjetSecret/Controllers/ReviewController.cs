@@ -26,15 +26,29 @@ namespace ProjetSecret.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ReviewDto>> CreateReview(Review review)
+        public async Task<ActionResult<ReviewDto>> CreateReview(CreateReviewDto dto)
         {
-            review.UserId = GetCurrentUserId();
-            review.DatePublication = DateTime.UtcNow;
+            var userId = GetCurrentUserId();
+
+            var game = await _context.Games.FindAsync(dto.GameId);
+            if (game == null)
+                return NotFound(new { message = "Jeu non trouvé" });
+
+            var review = new Review
+            {
+                GameId = dto.GameId,
+                UserId = userId,
+                Note = dto.Note,
+                Commentaire = dto.Commentaire,
+                DatePublication = DateTime.UtcNow
+            };
 
             _context.Reviews.Add(review);
             await _context.SaveChangesAsync();
 
-            var dto = new ReviewDto
+            await _context.Entry(review).Reference(r => r.User).LoadAsync();
+
+            return Ok(new ReviewDto
             {
                 ReviewId = review.ReviewId,
                 UserId = review.UserId,
@@ -43,10 +57,9 @@ namespace ProjetSecret.Controllers
                 Note = review.Note,
                 Commentaire = review.Commentaire,
                 DatePublication = review.DatePublication
-            };
-
-            return CreatedAtAction(nameof(GetReviewById), new { id = review.ReviewId }, dto);
+            });
         }
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ReviewDto>>> GetAllReviews()

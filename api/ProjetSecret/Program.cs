@@ -10,11 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // --- 1. CONFIGURATION DES SERVICES ---
 
 var connectionString = builder.Configuration.GetConnectionString("Default");
-var jwtSecret = builder.Configuration["JWT_SECRET"];
+var jwtSecret = builder.Configuration["Jwt:Secret"];
 
 if (string.IsNullOrEmpty(jwtSecret))
 {
-    throw new InvalidOperationException("JWT_SECRET n'est pas défini ! Vérifiez .env et docker-compose.yml");
+    throw new InvalidOperationException("Jwt:Secret n'est pas défini ! Vérifiez .env et docker-compose.yml");
 }
 if (string.IsNullOrEmpty(connectionString))
 {
@@ -28,7 +28,12 @@ builder.Services.AddCors();
 builder.Services.AddDbContext<GameCollectDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 builder.Services.AddScoped<Seeder>();
 
 builder.Services.AddAuthentication(options =>

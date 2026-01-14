@@ -1,12 +1,224 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\Models\\Review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\Models\\Game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Controllers\\GamesController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\Controllers\\GamesController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\AuthResponseDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\AuthResponseDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\GameDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\GameDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\ReviewDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\ReviewDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserUpdateDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\UserUpdateDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserRegisterDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\UserRegisterDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserLoginDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\UserLoginDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserGameDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\UserGameDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:api\\ProjetSecret\\DTOs\\UserDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Review.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\Models\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:59:59.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Game.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\Models\\Game.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Models\\Game.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\Models\\Game.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:59:47.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GamesController.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Controllers\\GamesController.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\Controllers\\GamesController.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\Controllers\\GamesController.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\Controllers\\GamesController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:31.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserUpdateDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\UserUpdateDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserUpdateDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\UserUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:04.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserRegisterDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserRegisterDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\UserRegisterDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserRegisterDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\UserRegisterDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:03.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserLoginDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserLoginDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\UserLoginDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserLoginDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\UserLoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:03.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserGameDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserGameDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\UserGameDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserGameDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\UserGameDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:02.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\UserDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\UserDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:57:01.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReviewDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\ReviewDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\ReviewDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\ReviewDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\ReviewDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:56:59.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GameDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\GameDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\GameDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\GameDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\GameDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:56:56.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\AuthResponseDto.cs",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\DTOs\\AuthResponseDto.cs",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\DTOs\\AuthResponseDto.cs",
+              "RelativeToolTip": "api\\ProjetSecret\\DTOs\\AuthResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:56:32.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "api\\ProjetSecret\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\imfii\\Desktop\\DEV\\Aston\\GameCollect-Back\\api\\ProjetSecret\\appsettings.Development.json",
+              "RelativeToolTip": "api\\ProjetSecret\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-10T18:56:27.17Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

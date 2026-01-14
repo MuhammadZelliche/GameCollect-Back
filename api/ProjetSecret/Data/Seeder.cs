@@ -1,6 +1,9 @@
 using Bogus;
 using Microsoft.EntityFrameworkCore;
 using ProjetSecret.Models;
+using System.Text.Json;
+using System.Net.Http;
+using ProjetSecret.Utils;
 
 namespace ProjetSecret.Data
 {
@@ -12,7 +15,7 @@ namespace ProjetSecret.Data
         {
             _context = context;
         }
-        
+
         private static DateTime ToUtc(DateTime date)
         {
             return DateTime.SpecifyKind(date, DateTimeKind.Local).ToUniversalTime();
@@ -22,8 +25,16 @@ namespace ProjetSecret.Data
         {
             if (await _context.Users.AnyAsync() || await _context.Games.AnyAsync())
             {
-                Console.WriteLine("La base de données contient déjà des données. Seeding annulé.");
-                return;
+                Console.WriteLine("Nettoyage de la base de données...");
+
+                _context.UserGames.RemoveRange(_context.UserGames);
+                _context.Reviews.RemoveRange(_context.Reviews);
+                _context.Games.RemoveRange(_context.Games);
+                _context.Users.RemoveRange(_context.Users);
+
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("Base de données vidée avec succès.");
             }
 
             Console.WriteLine("Début du seeding...");
@@ -51,17 +62,40 @@ namespace ProjetSecret.Data
             await _context.Users.AddRangeAsync(fakeUsers);
 
             // --- 3. Créer 500 Faux Jeux ---
-            var gameFaker = new Faker<Game>("fr")
-                .RuleFor(g => g.Titre, f => f.Commerce.ProductName())
-                .RuleFor(g => g.Plateforme, f => f.PickRandom("PlayStation 5", "Xbox Series X", "Nintendo Switch", "PC", "Mega Drive"))
-                .RuleFor(g => g.AnneeSortie, f => f.Random.Int(1980, 2024))
-                .RuleFor(g => g.ImageUrl, f => f.Image.PicsumUrl())
-                .RuleFor(g => g.Rarete, f => f.PickRandom("Commun", "Rare", "Très Rare"));
+            var httpClient = new HttpClient();
 
-            var fakeGames = gameFaker.Generate(500);
-            await _context.Games.AddRangeAsync(fakeGames);
-            
-            await _context.SaveChangesAsync();
+            var response = await httpClient.GetAsync("https://www.freetogame.com/api/games");
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+
+            var freeGames = JsonSerializer.Deserialize<List<FreeToGameGame>>(
+                json,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            );
+
+            if (freeGames != null && freeGames.Any())
+            {
+                foreach (var game in freeGames)
+                {
+                    _context.Games.Add(new Game
+                    {
+                        Titre = game.title,
+                        Plateforme = game.platform,
+                        AnneeSortie = DateTime.TryParse(game.release_date, out var date)
+                            ? date.Year
+                            : 0,
+                        ImageUrl = game.thumbnail,
+                        Rarete = RarityHelper.GetRandomRarete()
+                    });
+                }
+
+                await _context.SaveChangesAsync();
+            }
+
             Console.WriteLine("Utilisateurs et Jeux créés.");
 
             // --- 4. Créer 1000 UserGame ---

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
-using ProjetSecret.Data; 
-using ProjetSecret.Models; 
+using Microsoft.EntityFrameworkCore;
+using ProjetSecret.Data;
+using ProjetSecret.Models;
 using Microsoft.AspNetCore.Authorization;
 using ProjetSecret.DTOs;
 
@@ -13,24 +13,24 @@ namespace ProjetSecret.Controllers
     public class GamesController : ControllerBase
     {
         private readonly GameCollectDbContext _context;
-        
+
         public GamesController(GameCollectDbContext context)
         {
             _context = context;
         }
-        
+
         // POST: api/games
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Game>> CreateGame(Game game)
         {
             _context.Games.Add(game);
-            
+
             await _context.SaveChangesAsync();
-            
+
             return CreatedAtAction(nameof(GetGameById), new { id = game.GameId }, game);
         }
-        
+
         // GET: api/games
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameDto>>> GetAllGames()
@@ -62,7 +62,7 @@ namespace ProjetSecret.Controllers
                 }).ToList()
             }).ToListAsync();
         }
-        
+
         // GET: api/games/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Game>> GetGameById(int id)
@@ -93,17 +93,17 @@ namespace ProjetSecret.Controllers
                         NotePerso = ug.NotePerso,
                         DateAjout = ug.DateAjout,
                     }).ToList()
-                    
+
                 }).FirstOrDefaultAsync();
-            
+
             if (game == null)
             {
                 return NotFound(new { message = "Jeu non trouvé" });
             }
-            
+
             return Ok(game);
         }
-        
+
         // PUT: api/games/5
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin")]
@@ -113,7 +113,7 @@ namespace ProjetSecret.Controllers
             {
                 return BadRequest(new { message = "L'ID de l'URL ne correspond pas à l'ID du jeu" });
             }
-            
+
             _context.Entry(game).State = EntityState.Modified;
 
             try
@@ -128,13 +128,13 @@ namespace ProjetSecret.Controllers
                 }
                 else
                 {
-                    throw; 
+                    throw;
                 }
             }
-            
+
             return NoContent();
         }
-        
+
         // DELETE: api/games/5
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
@@ -149,7 +149,7 @@ namespace ProjetSecret.Controllers
 
             _context.Games.Remove(game);
             await _context.SaveChangesAsync();
-            
+
             return NoContent();
         }
     }
